@@ -17,21 +17,30 @@ var filterButton = d3.select("#filter-btn");
 
 filterButton.on("click", function () {
   var inputDate = d3.select("#datetime").property("value");
-  var filteredObs = tableData.filter(
-    (observation) => observation.datetime === inputDate
-  );
-
-  // check the filtered observations
-  console.log(filteredObs);
-
-  // rewrite the table content
-  tbody.html("");
-
-  filteredObs.forEach((observation) => {
-    var row = tbody.append("tr");
-    Object.entries(observation).forEach(([key, value]) => {
-      var cell = row.append("td");
-      cell.text(value);
+  if (inputDate === "") {
+    tableData.forEach((observation) => {
+      var row = tbody.append("tr");
+      Object.entries(observation).forEach(([key, value]) => {
+        var cell = row.append("td");
+        cell.text(value);
+      });
     });
-  });
+  } else {
+    var filteredObs = tableData.filter(
+      (observation) => observation.datetime === inputDate
+    );
+    // check the filtered observations
+    console.log(filteredObs);
+
+    // rewrite the table content
+    tbody.html("");
+
+    filteredObs.forEach((observation) => {
+      var row = tbody.append("tr");
+      Object.entries(observation).forEach(([key, value]) => {
+        var cell = row.append("td");
+        cell.text(value);
+      });
+    });
+  }
 });
