@@ -34,14 +34,51 @@ filterButton.on("click", function () {
   var inputShape = d3.select("#shape").property("value");
   console.log(inputShape);
 
-  var filteredObs = tableData.filter(
-    (observation) =>
-      observation.datetime === selectedDate &&
-      observation.city === inputCity &&
-      observation.state === inputState &&
-      observation.country === selectedCountry &&
-      observation.shape === inputShape
-  );
+  var filteredObs = tableData;
+
+  if (selectedDate) {
+    filteredObs = filteredObs.filter(
+      (observation) => observation.datetime === selectedDate
+    );
+  }
+
+  if (inputCity) {
+    filteredObs = filteredObs.filter(
+      (observation) => observation.city === inputCity
+    );
+  }
+
+  if (inputState) {
+    filteredObs = filteredObs.filter(
+      (observation) => observation.state === inputState
+    );
+  }
+
+  if (selectedCountry) {
+    filteredObs = filteredObs.filter(
+      (observation) => observation.country === selectedCountry
+    );
+  }
+
+  if (selectedCountry) {
+    filteredObs = filteredObs.filter(
+      (observation) => observation.country === selectedCountry
+    );
+  }
+
+  if (inputShape) {
+    filteredObs = filteredObs.filter(
+      (observation) => observation.shape === inputShape
+    );
+  }
+  //   var filteredObs = tableData.filter(
+  //     (observation) =>
+  //       observation.datetime === selectedDate &&
+  //       observation.city === inputCity &&
+  //       observation.state === inputState &&
+  //       observation.country === selectedCountry &&
+  //       observation.shape === inputShape
+  //   );
 
   // check the filtered observations
   console.log(filteredObs);
