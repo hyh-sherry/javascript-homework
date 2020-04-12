@@ -5,44 +5,55 @@ var tableData = data;
 var tbody = d3.select("#ufo-table>tbody");
 
 tableData.forEach((observation) => {
-    var row = tbody.append("tr");
-    Object.entries(observation).forEach(([key,value]) => {
-        var cell = row.append("td");
-        cell.text(value);
-    })
+  var row = tbody.append("tr");
+  Object.entries(observation).forEach(([key, value]) => {
+    var cell = row.append("td");
+    cell.text(value);
+  });
 });
 
 // Write JavaScript code that will listen for events and search through o find rows that match user input.
 var filterButton = d3.select("#filter-btn");
 
-filterButton.on("click", function() {
-    var elementDate = document.getElementById("datetime");
-    var selectedDate = elementDate.options[elementDate.selectedIndex].text
+filterButton.on("click", function () {
+  var elementDate = document.getElementById("datetime");
+  var selectedDate = elementDate.options[elementDate.selectedIndex].text;
+  console.log(selectedDate);
 
-    var inputCity = d3.select("#city").property("value");
+  var inputCity = d3.select("#city").property("value");
+  console.log(inputCity);
 
-    var inputState = d3.select("#state").property("value");
+  var inputState = d3.select("#state").property("value");
+  console.log(inputState);
 
-    var elementCountry = document.getElementById("country");
-    var selectedCountry = elementCountry.options[elementCountry.selectedIndex].text
+  var elementCountry = document.getElementById("country");
+  var selectedCountry =
+    elementCountry.options[elementCountry.selectedIndex].text;
+  console.log(selectedCountry);
 
-    var inputShape = d3.select("#shape").property("value");
+  var inputShape = d3.select("#shape").property("value");
+  console.log(inputShape);
 
-    var filteredObs = tableData.filter(observation => observation.datetime === selectedDate && 
-        observation.city === inputCity && observation.state === inputState && 
-        observation.country === selectedCountry && observation.shape === inputShape);
+  var filteredObs = tableData.filter(
+    (observation) =>
+      observation.datetime === selectedDate &&
+      observation.city === inputCity &&
+      observation.state === inputState &&
+      observation.country === selectedCountry &&
+      observation.shape === inputShape
+  );
 
-    // check the filtered observations
-    console.log(filteredObs);
+  // check the filtered observations
+  console.log(filteredObs);
 
-    // rewrite the table content
-    tbody.html("");
+  // rewrite the table content
+  tbody.html("");
 
-    filteredObs.forEach((observation) => {
-        var row = tbody.append("tr");
-        Object.entries(observation).forEach(([key, value]) => {
-            var cell = row.append("td");
-            cell.text(value);
-        })
-    })
+  filteredObs.forEach((observation) => {
+    var row = tbody.append("tr");
+    Object.entries(observation).forEach(([key, value]) => {
+      var cell = row.append("td");
+      cell.text(value);
+    });
+  });
 });
