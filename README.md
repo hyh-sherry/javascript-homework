@@ -1,8 +1,4 @@
-# JavaScript Homework
-
-UofTSTG Data Boot Camp Homework11
-
-# Unit 14 | Assignment - JavaScript and DOM Manipulation
+# JavaScript and DOM Manipulation
 
 ## Background
 
@@ -46,10 +42,3 @@ You can handle this... right? The planet Earth needs to know what we have found!
 
 ---
 
-**Good luck!**
-
----
-
-### Copyright
-
-Data Boot Camp © 2018. All Rights Reserved.
